@@ -1,0 +1,21 @@
+.center-align{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -130px;
+}
+
+.center{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.espacio{
+    margin-top: 40px;
+}
