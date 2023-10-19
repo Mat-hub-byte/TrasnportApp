@@ -34,7 +34,10 @@ export class AuthPage implements OnInit {
     if (this.form.valid) {
 
       this.firebaseSvc.signIn(this.form.value as User).then(res => {
-        console.log(res);
+
+
+        this.getUserInfo(res.user.uid);
+
       }).catch(error => {
         console.log(error);
 
@@ -52,5 +55,51 @@ export class AuthPage implements OnInit {
     }
 
   }
-  
+
+  async getUserInfo(uid:string) {
+
+    const loading = await this.UtilsSvc.loading();
+    await loading.present();
+
+    let path = 'users/${uid}';
+
+    if (this.form.valid) {
+
+      this.firebaseSvc.getDocument(path).then( (user:User) => {
+
+        this.UtilsSvc.saveInLocalStorage('user', user);
+        this.UtilsSvc.routerlink('/main/home');
+        this.form.reset();
+
+        this.UtilsSvc.presentToas({
+          message: `Te damos la Bienvenida CABRON ${user.name}`,
+          duration:3500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'person-circle-outline'
+        })
+
+        
+
+
+      }).catch(error => {
+        console.log(error);
+
+        this.UtilsSvc.presentToas({
+          message: error.massage,
+          duration:2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        })
+
+      }).finally(() => {
+        loading.dismiss();
+      })
+    }
+
+  }
+
 }
+  
+
