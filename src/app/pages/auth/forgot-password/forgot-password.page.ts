@@ -23,13 +23,25 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   async submit() {
-
-    const loading = await this.UtilsSvc.loading();
-    await loading.present();
-
     if (this.form.valid) {
 
+      const loading = await this.UtilsSvc.loading();
+      await loading.present();
+
+    
+
       this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
+
+        this.UtilsSvc.presentToas({
+          message: 'Se ha enviado un mail a tu casilla asociada',
+          duration: 3000,
+          color: 'primary',
+          position: 'middle',
+          icon: 'mail-outline'
+        })
+
+        this.UtilsSvc.routerlink('/auth');
+        this.form.reset();
 
       }).catch(error => {
         console.log(error);

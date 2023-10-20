@@ -35,14 +35,14 @@ export class AuthPage implements OnInit {
 
       this.firebaseSvc.signIn(this.form.value as User).then(res => {
 
-
         this.getUserInfo(res.user.uid);
+        
 
       }).catch(error => {
         console.log(error);
 
         this.UtilsSvc.presentToas({
-          message: error.massage,
+          message: error.message,
           duration:2500,
           color: 'primary',
           position: 'middle',

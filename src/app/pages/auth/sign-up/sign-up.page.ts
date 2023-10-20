@@ -48,7 +48,7 @@ export class SignUpPage implements OnInit {
         console.log(error);
 
         this.UtilsSvc.presentToas({
-          message: error.massage,
+          message: error.message,
           duration:2500,
           color: 'primary',
           position: 'middle',
@@ -75,9 +75,17 @@ export class SignUpPage implements OnInit {
 
       this.firebaseSvc.setDocument(path, this.form.value).then( async res => {
 
+        this.UtilsSvc.presentToas({
+          message: 'Te registraste correctamente',
+          duration:2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'trophy-outline'
+        })
+
         this.UtilsSvc.saveInLocalStorage('user', this.form.value);
 
-        this.UtilsSvc.routerlink('/main/home');
+        this.UtilsSvc.routerlink('/auth');
 
         this.form.reset();
 
@@ -86,7 +94,7 @@ export class SignUpPage implements OnInit {
         console.log(error);
 
         this.UtilsSvc.presentToas({
-          message: error.massage,
+          message: error.message,
           duration:2500,
           color: 'primary',
           position: 'middle',
