@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { AddUpdatePublishComponent } from 'src/app/shared/components/add-update-publish/add-update-publish.component';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,17 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void { }
 
+  //----------------cierre de sesion----------------
   signOut() {
     this.firebaseSvc.signOut()
   }
+
+  //----------------agregar y actualizar producto----------------
+  addUpdateProduct(){
+    this.utileSvc.presentModal({
+      component: AddUpdatePublishComponent,
+      cssClass: 'add-update-modal'
+    })
+  }
+
 }

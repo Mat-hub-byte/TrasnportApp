@@ -1,0 +1,17 @@
+
+#text-center{
+    justify-content: center;
+    display: flex;
+}
+
+.image.icon{
+    font-size: 100px;
+    opacity: 30%;
+}
+
+ion-avatar{
+    width: 550px;
+    height: 200px;
+    // --border-radius: 5px; //redondea la imagen
+    margin: 0 auto; //centra la imagen
+}

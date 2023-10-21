@@ -5,6 +5,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { LogoComponent } from './components/logo/logo.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUpdatePublishComponent } from './components/add-update-publish/add-update-publish.component';
 
 
 
@@ -13,13 +14,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HeaderComponent,
     CustomInputComponent,
-    LogoComponent
+    LogoComponent,
+    AddUpdatePublishComponent
   ],
   exports:  [
     HeaderComponent,
     CustomInputComponent,
     LogoComponent,
     ReactiveFormsModule,
+    AddUpdatePublishComponent
   ],
   imports: [
     CommonModule,
