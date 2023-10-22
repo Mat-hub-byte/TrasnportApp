@@ -3,22 +3,24 @@
 <ion-content>
     <form [formGroup]="form" class="aut-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
         <!-- ----------Si es que existe una imagen-------- -->
-        <ion-avatar *ngIf="form.value.image">
+        <!-- <ion-avatar *ngIf="form.value.image">
             <img [src]="form.value.image" />
-        </ion-avatar>
+        </ion-avatar> -->
 
-        <!-- <ion-img *ngIf="form.value.image" 
-            src="form.value.image"
+        <!-- ----------Si es que existe una imagen-------- -->
+        <ion-img *ngIf="form.value.image" 
+            [src]="form.value.image"
             alt="Su imagen no esta disponible">
-        </ion-img> -->
-
-        <!-- ----------SINO existe una imagen-------- -->
-        <ion-icon class="image.icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
-
+        </ion-img>
 
         <br>
+        
+        <!-- ----------SINO existe una imagen-------- -->
+        <ion-icon class="image.icon" *ngIf="!form.value.image"  name="image-outline" style="font-size: 15rem; opacity: 30%; display: block; margin: 0 auto; text-align: center; line-height: 3rem">
+        </ion-icon>
+        
         <!------------SACAR O SELECCIONAR UNA FOTO------------ -->
-        <ion-button (click)="takeImage()" size="small" shape="round">
+        <ion-button class="text-center" (click)="takeImage()" mode="ios" size="small" shape="round">
             Tomar foto o seleccionar
         </ion-button>
 
@@ -27,13 +29,14 @@
         <app-custom-input [control]="form.controls.name" type="text" label="Descripcion"></app-custom-input>
 
         <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
-            <div colore="primary" *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div>
-            <div colore="primary" *ngIf="form.controls.name.errors?.['minlenght']">La descripcion tiene un maximo de 280
-                caracteres</div>
+            <div *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div>
+            <div *ngIf="form.controls.name.errors?.['minlength']">La descripcion tiene un maximo de 280
+               caracteres</div>
         </div>
 
+        <br>
 
-        <div id="text-center">
+        <div class="text-center">
             <ion-button mode="ios" class="espacio" type="submit" [disabled]="form.invalid">
                 Agregar publicacion
                 <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>

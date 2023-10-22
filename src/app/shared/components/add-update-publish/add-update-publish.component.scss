@@ -1,17 +1,23 @@
 
-#text-center{
+.text-center{
     justify-content: center;
     display: flex;
 }
 
-.image.icon{
-    font-size: 100px;
-    opacity: 30%;
+.icon-inner{
+    width: 500px;
 }
 
-ion-avatar{
-    width: 550px;
-    height: 200px;
-    // --border-radius: 5px; //redondea la imagen
-    margin: 0 auto; //centra la imagen
+.image.icon{
+    font-size: 200px;
+    width: 350px;
+    opacity: 40%;
 }
+
+
+// ion-avatar{
+//     width: 500px;
+//     height: 180px;
+//     // --border-radius: 5px; //redondea la imagen
+//     margin: 0 auto; //centra la imagen
+// }
