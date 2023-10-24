@@ -42,3 +42,12 @@
         --height:680px;
     }
 }
+
+.product-item{
+    --padding-top:20px;
+    ion-avatar{
+        width: 70%;
+        height: 80px;
+        --border-radius:15px;
+    }
+}
