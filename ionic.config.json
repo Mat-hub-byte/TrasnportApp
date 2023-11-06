@@ -1,5 +1,7 @@
 {
   "name": "app-transportes",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

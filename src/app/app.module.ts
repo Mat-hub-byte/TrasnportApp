@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 // -----FIREBASE------
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,7 +18,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule, 
     IonicModule.forRoot({mode : 'md'}), 
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule
   ],
     
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

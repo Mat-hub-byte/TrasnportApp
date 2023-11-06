@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-button class="backbutton">
+        <ion-back-button defaultHref="/main/home"></ion-back-button>
+      </ion-button>
+    
+      <ion-title color="primary">Museos Info</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+      <ion-list>
+        <!-- recorrer de museos (el array con la api) y almacenarlo en museo -->
+    <ion-item *ngFor="let museo of museos">
+    <div class="label-container">
+    <ion-label>Nombre: {{museo.nombre}}</ion-label>
+    <ion-label>Dirección: {{museo.direccion}}</ion-label>
+    <ion-label>Telefono: {{museo.telefono}}</ion-label>
+    </div>
+
+    </ion-item>
+    </ion-list>
+
+    <!-- <h1>Estado del Subte</h1>
+    <iframe id="iframedesktop" style="bottom:0px; top:0px; background-color:white; min-width:100%; min-height:550px; overflow:hidden; z-index:1000; position:relative;" frameborder="0" src="https://aplicacioneswp.metrovias.com.ar/estadolineas/desktop.html">
+    </iframe> -->
+  
+</ion-content>

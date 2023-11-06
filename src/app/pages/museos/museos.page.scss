@@ -1,0 +1,16 @@
+.label-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+
+    ion-label{
+        padding-bottom: 7px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }
+
+  .backbutton{
+    height: 50%;
+    width: 10%;
+}

@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'main',
     loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule), canActivate: [AuthGuard]
   },
+  {
+    path: 'museos',
+    loadChildren: () => import('./pages/museos/museos.module').then( m => m.MuseosPageModule)
+  },
   
 ];
 @NgModule({

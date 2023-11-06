@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
 
   //----------Obtener productos
   getProducts(){
-    let path= `users/${this.user().uid}/posteos`;
+    let path= `users/${this.user().uid}/products`;
     let sub = this.firebaseSvc.getCollectionData(path).subscribe((res: any) => {
       console.log(res);
       this.products = res;

@@ -72,8 +72,8 @@ export class AuthPage implements OnInit {
         this.form.reset();
 
         this.UtilsSvc.presentToas({
-          message: `Te damos la Bienvenida CABRON ${user.name}`,
-          duration:3500,
+          message: `Te damos la Bienvenida ${user.name}`,
+          duration: 2500,
           color: 'primary',
           position: 'middle',
           icon: 'person-circle-outline'
