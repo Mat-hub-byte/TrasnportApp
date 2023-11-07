@@ -10,16 +10,16 @@ export class MuseosPage implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  museos: any[] = [];
+  personajes: any[] = [];
 
   ngOnInit() {
 
     //Obtiene info de los museos (api) mediante GET
     //Agregamos <any> a  this.http.get para evitar "Propery 'results' does not exist on typo 'object'."
-    this.http.get<any>('https://www.cultura.gob.ar/api/v2.0/organismos/').subscribe(res =>{
+    this.http.get<any>('https://rickandmortyapi.com/api/character').subscribe(res =>{
       console.log(res); //Muestra el array
       //ITEM B - Lo colocamos dentro de una variable array para luego recorrerla 
-      this.museos = res.results;
+      this.personajes = res.results;
     })
 
   }

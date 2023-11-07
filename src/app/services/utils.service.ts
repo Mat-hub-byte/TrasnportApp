@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-
+import { CorsOptions } from "cors";
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +25,6 @@ export class UtilsService {
       promptLabelPicture:'Toma una foto'
     });
   };
-
 
   //------------------ loading -----------------------
   loading(): Promise<HTMLIonLoadingElement> {
