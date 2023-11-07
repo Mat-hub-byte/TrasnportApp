@@ -26,6 +26,7 @@ export class UtilsService {
     });
   };
 
+
   //------------------ loading -----------------------
   loading(): Promise<HTMLIonLoadingElement> {
     return this.loadingCtrl.create({ spinner: 'crescent' })
