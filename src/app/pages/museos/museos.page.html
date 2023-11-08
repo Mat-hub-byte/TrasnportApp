@@ -13,11 +13,11 @@
 <ion-content [fullscreen]="true">
       <ion-list>
         <!-- recorrer de museos (el array con la api) y almacenarlo en museo -->
-    <ion-item *ngFor="let personaje of personajes">
+    <ion-item *ngFor="let museo of museos">
     <div class="label-container">
-    <ion-label>Nombre: {{personaje.name}}</ion-label>
-    <!-- <ion-label>Dirección: {{museo.direccion}}</ion-label>
-    <ion-label>Telefono: {{museo.telefono}}</ion-label> -->
+    <ion-label>Nombre: {{museo.nombre}}</ion-label>
+    <ion-label>Dirección: {{museo.direccion}}</ion-label>
+    <ion-label>Telefono: {{museo.telefono}}</ion-label>
     </div>
 
     </ion-item>
