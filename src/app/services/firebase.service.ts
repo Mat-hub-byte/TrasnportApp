@@ -4,7 +4,6 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, up
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getFirestore, setDoc, doc, getDoc, addDoc, collection, collectionData,query} from '@angular/fire/firestore';
-import { Observable, retry } from 'rxjs';
 import { UtilsService } from './utils.service';
 import {AngularFireStorage} from '@angular/fire/compat/storage';
 import {getStorage,uploadString,ref,getDownloadURL} from 'firebase/storage'
@@ -15,18 +14,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FirebaseService {
 
-  constructor(private http:HttpClient){}
-    getAll(): Observable<any>{
-      return this.http.get<any>('/api/v2.0/museos/');
-
-  }
-  
   auth = inject(AngularFireAuth);
   firestore = inject(AngularFirestore);
   storage = inject(AngularFireStorage)
   utilsSvc = inject(UtilsService);
-
-
 
   //-----------------------------------AUTENTICACION------------------------------------
   getAuth() {

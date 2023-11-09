@@ -1,7 +1,7 @@
 {
-    "/api": {
-      "target": "https://www.cultura.gob.ar",
-      "secure": false
+    "/api/*":{
+        "target":"https://www.cultura.gob.ar/api/v2.0/museos/",
+        "secure": false,
+        "logLevel": "debug"
     }
-  }
-  
+}
