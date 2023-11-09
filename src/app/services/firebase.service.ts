@@ -17,8 +17,8 @@ export class FirebaseService {
 
   constructor(private http:HttpClient){}
     getAll(): Observable<any>{
-      return this.http.get<any>('https://www.cultura.gob.ar/api/v2.0/museos/');
-    
+      return this.http.get<any>('/api/v2.0/museos/');
+
   }
   
   auth = inject(AngularFireAuth);
