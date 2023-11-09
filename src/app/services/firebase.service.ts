@@ -20,6 +20,7 @@ export class FirebaseService {
       return this.http.get<any>('https://www.cultura.gob.ar/api/v2.0/museos/');
     
   }
+  
   auth = inject(AngularFireAuth);
   firestore = inject(AngularFirestore);
   storage = inject(AngularFireStorage)

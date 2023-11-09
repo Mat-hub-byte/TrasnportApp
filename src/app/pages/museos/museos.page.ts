@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as firebaseService from 'src/app/services/firebase.service';
 import { FirebaseApp } from '@angular/fire/app';
+import { title } from 'process';
 
 @Component({
   selector: 'app-museos',
@@ -16,7 +17,7 @@ export class MuseosPage implements OnInit {
   museos: any[] = [];
 
   ngOnInit() {
-
+    title: 'proxy';
     //Obtiene info de los museos (api) mediante GET
     //Agregamos <any> a  this.http.get para evitar "Propery 'results' does not exist on typo 'object'."
     this.http.getAll().subscribe(res=>{
