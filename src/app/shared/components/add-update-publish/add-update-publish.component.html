@@ -1,4 +1,4 @@
-<app-header [isModal]=true title="Nueva publicacion"></app-header>
+<app-header [isModal]=true [title]="product ? 'Actualizar Producto' : 'Agregar Producto'"></app-header>
 
 <ion-content>
     <form [formGroup]="form" class="aut-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
@@ -38,7 +38,7 @@
 
         <div class="text-center">
             <ion-button mode="ios" class="espacio" type="submit" [disabled]="form.invalid">
-                Agregar publicacion
+                {{product ? 'Actualizar Producto' : 'Agregar Producto'}}
                 <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
             </ion-button>
         </div>

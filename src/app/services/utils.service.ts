@@ -50,7 +50,14 @@ export class UtilsService {
 
   //------------------ OBTENER un elemento en localstrage -------------------------
   getFromLocalStorage(key: string) {
-    return JSON.parse(localStorage.getItem(key))
+    const item = localStorage.getItem(key);
+  
+    if (item) {
+      return JSON.parse(item);
+    } else {
+      // Manejar el caso en que el valor no existe en localStorage
+      return null; // o cualquier valor predeterminado que desees devolver
+    }
   }
 
   //-------------------Modal------------------

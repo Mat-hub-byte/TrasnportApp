@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainPageRoutingModule } from './main-routing.module';
 
 import { MainPage } from './main.page';
+import { MainPageRoutingModule } from './main-routing.module';
+
 
 @NgModule({
   imports: [

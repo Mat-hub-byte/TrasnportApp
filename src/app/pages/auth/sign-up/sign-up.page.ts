@@ -68,7 +68,7 @@ export class SignUpPage implements OnInit {
     const loading = await this.UtilsSvc.loading();
     await loading.present();
 
-    let path = 'users/${uid}';
+    let path = `users/${uid}`;
     delete this.form.value.password; 
 
     if (this.form.valid) {

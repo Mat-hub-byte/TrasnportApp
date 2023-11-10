@@ -61,7 +61,7 @@ export class AuthPage implements OnInit {
     const loading = await this.UtilsSvc.loading();
     await loading.present();
 
-    let path = 'users/${uid}';
+    let path = `users/${uid}`;
 
     if (this.form.valid) {
 
