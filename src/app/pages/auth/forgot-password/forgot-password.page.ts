@@ -21,18 +21,19 @@ export class ForgotPasswordPage implements OnInit {
 
   ngOnInit() {
   }
-
+    /**
+   * @method submit
+   */
   async submit() {
-    if (this.form.valid) {
+    if (this.form.valid) {// si el form es valid
 
-      const loading = await this.UtilsSvc.loading();
-      await loading.present();
+      const loading = await this.UtilsSvc.loading();// se crea un loading
+      await loading.present(); // se presenta el loading
+      
+     
+      this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => { // se envia recuperar contraseña al email del campo
 
-    
-
-      this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
-
-        this.UtilsSvc.presentToas({
+        this.UtilsSvc.presentToas({// popout si fue exitoso
           message: 'Se ha enviado un mail a tu casilla asociada',
           duration: 3000,
           color: 'primary',
@@ -40,13 +41,13 @@ export class ForgotPasswordPage implements OnInit {
           icon: 'mail-outline'
         })
 
-        this.UtilsSvc.routerlink('/auth');
+        this.UtilsSvc.routerlink('/auth'); // redirije al login
         this.form.reset();
 
       }).catch(error => {
         console.log(error);
 
-        this.UtilsSvc.presentToas({
+        this.UtilsSvc.presentToas({  
           message: error.massage,
           duration: 2500,
           color: 'primary',

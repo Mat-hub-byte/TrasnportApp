@@ -2,6 +2,7 @@
   <ion-toolbar>
       <!-- <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button> -->
       <ion-item>
+        <ion-icon name="images-outline"></ion-icon>
         <ion-title color="primary">Feed</ion-title>
         <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button>
       </ion-item>
@@ -42,8 +43,9 @@
   <!---- nuevo producto ---->
 
   <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+
     <ion-fab-button (click)="addUpdateProduct()">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="camera-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
