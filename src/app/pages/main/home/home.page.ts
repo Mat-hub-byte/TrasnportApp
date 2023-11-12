@@ -22,11 +22,18 @@ export class HomePage implements OnInit {
   ngOnInit(): void { }
 
   //----------------cierre de sesion----------------
+  /**
+   * @method signOut de services/firebase.service.ts
+   */
   signOut() {
     this.firebaseSvc.signOut(),
       localStorage.removeItem('user')
   }
 
+  /**
+   * 
+   * @returns user de localstorage = service/utils.service.ts
+   */
   user(): User {
     return this.utilsSvc.getFromLocalStorage('user');
   }
@@ -38,6 +45,9 @@ export class HomePage implements OnInit {
 
 
   //----------Obtener productos
+  /**
+   * @method getProducts Obtiene la columna 'product' del uid del user logeado
+   utiliza el getCollectionData de service/firebase.service.ts*/
   getProducts() {
     let path = `users/${this.user().uid}/products`;
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
@@ -52,15 +62,18 @@ export class HomePage implements OnInit {
 
 
   //----------------Agregar o actualizar producto----------------
+  /**
+   * @method addUpdateProduct 
+   */             //product tiene interface models/product.model.ts
   async addUpdateProduct(product?: Product) {
-    let success = await this.utilsSvc.presentModal({
+    let success = await this.utilsSvc.presentModal({ // espera para la presentacion
       component: AddUpdatePublishComponent,
       cssClass: 'add-update-modal',
       componentProps: { product }
     });
 
     if (success) {
-      this.getProducts();
+      this.getProducts(); //linea 51
     }
   }
 
@@ -87,10 +100,10 @@ export class HomePage implements OnInit {
         icon: 'checkmark-circle-outline'
       })
 
-    }).catch(error => {
+    }).catch(error => { // si hay error
       console.log(error);
 
-      this.utilsSvc.presentToas({
+      this.utilsSvc.presentToas({ // muetra el error 
         message: error.message,
         duration: 2500,
         color: 'primary',
@@ -98,7 +111,7 @@ export class HomePage implements OnInit {
         icon: 'alert-circle-outline'
       })
 
-    }).finally(() => {
+    }).finally(() => { // finaliza carga linea 87
       loading.dismiss();
     })
 }

@@ -22,13 +22,15 @@ export class CustomInputComponent  implements OnInit {
   ngOnInit() {
     if (this.type == 'password') this.isPassword = true;
   }
-
+  /**
+   * @method showOrHidePassword // muestra o 'esconde' lo escrito
+   */
   showOrHidePassword(){
     
     this.hide = !this.hide;
     
-    if (this.hide) this.type ='password';
-    else this.type = 'text';
+    if (this.hide) this.type ='password'; // si el tipo esta oculto es formato password
+    else this.type = 'text'; // de lo contrario es tipo formato texto
   }
 
 }

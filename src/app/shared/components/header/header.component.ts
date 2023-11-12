@@ -17,8 +17,12 @@ export class HeaderComponent  implements OnInit {
 
   ngOnInit() {}
 
-  dismissModal(data?: any){
-    this.utileSvc.dismissModal(data);
+  /**
+   * 
+   * @param data opcional
+   */
+  dismissModal(data?: any){ // parámetro opcional del tipo any
+    this.utileSvc.dismissModal(data); //cierra un modal (ventana emergente) en la app from utils.service.ts
   }
 
 }

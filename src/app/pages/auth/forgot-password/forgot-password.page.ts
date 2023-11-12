@@ -30,7 +30,7 @@ export class ForgotPasswordPage implements OnInit {
       const loading = await this.UtilsSvc.loading();// se crea un loading
       await loading.present(); // se presenta el loading
       
-     
+     // se envia recuperar contraseña al email del campo
       this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => { // se envia recuperar contraseña al email del campo
 
         this.UtilsSvc.presentToas({// popout si fue exitoso
@@ -42,12 +42,12 @@ export class ForgotPasswordPage implements OnInit {
         })
 
         this.UtilsSvc.routerlink('/auth'); // redirije al login
-        this.form.reset();
+        this.form.reset(); // resetea el form
 
       }).catch(error => {
         console.log(error);
 
-        this.UtilsSvc.presentToas({  
+        this.UtilsSvc.presentToas({ // popout del error
           message: error.massage,
           duration: 2500,
           color: 'primary',
@@ -55,7 +55,7 @@ export class ForgotPasswordPage implements OnInit {
           icon: 'alert-circle-outline'
         })
 
-      }).finally(() => {
+      }).finally(() => { // finaliza el loading inicia en linea 32
         loading.dismiss();
       })
     }
