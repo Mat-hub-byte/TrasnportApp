@@ -3,10 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from 'firebase/auth';
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc, getDoc, addDoc, collection, collectionData,query, updateDoc, deleteDoc} from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc, addDoc, collection, collectionData, query, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
-import {AngularFireStorage} from '@angular/fire/compat/storage';
-import {getStorage,uploadString,ref,getDownloadURL, deleteObject} from 'firebase/storage'
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from 'firebase/storage'
 import { HttpClient } from '@angular/common/http';
 
 
@@ -26,11 +26,11 @@ export class FirebaseService {
   }
 
   //-----acceder------
-   /**
-    * 
-    * @param user 
-    * @returns //registra al usuario autenticando el email y el password del user
-    */
+  /**
+   * 
+   * @param user 
+   * @returns //registra al usuario autenticando el email y el password del user
+   */
   signIn(user: User) {
     return signInWithEmailAndPassword(getAuth(), user.email, user.password);
   }
@@ -82,11 +82,11 @@ export class FirebaseService {
     * @param collectionQuery 
     * @returns //Obtener documentos de una collecion
     */
-   getCollectionData(path:string, collectionQuery?: any){
+  getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);
-    return collectionData(query(ref,collectionQuery), {idField:'id'});
+    return collectionData(query(ref, collectionQuery), { idField: 'id' });
 
-   }
+  }
 
   //--------setear un documento--------
   /**
@@ -144,39 +144,41 @@ export class FirebaseService {
   }
 
 
-    //========================ALMACENAMIENTO============================
+  //========================ALMACENAMIENTO============================
 
-    //=============Subir imagen========
-    /**
+  //=============Subir imagen========
+  /**
+ * 
+ * @param path 
+ * @param data_url 
+ * @returns uploadString Subir imagen
+ * @returns getDownloadURL Almacenamiento 
+ */
+  async uploadImage(path: string, data_url: string) {
+    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
+      return getDownloadURL(ref(getStorage(), path))
+    }
+    )
+  }
+
+  //===========Obtener ruta de la imagen con su url ======
+  /**
+   * 
+   * @param url 
+   * @returns obtiene la url del archivo en storage
+   */
+  async getFilePath(url: string) {
+    return ref(getStorage(), url).fullPath
+  }
+  /**
    * 
    * @param path 
-   * @param data_url 
-   * @returns uploadString Subir imagen
-   * @returns getDownloadURL Almacenamiento 
+   * @returns elemina 1 obj referenciado al path obtenido del storage
    */
-    async uploadImage(path: string, data_url:string){
-      return uploadString(ref(getStorage(),path), data_url,'data_url').then(()=>{ 
-      return getDownloadURL(ref(getStorage(),path))}
-    )}
-    
-    //===========Obtener ruta de la imagen con su url ======
-    /**
-     * 
-     * @param url 
-     * @returns obtiene la url del archivo en storage
-     */
-    async getFilePath(url: string){
-      return ref(getStorage(), url).fullPath 
-    }
-    /**
-     * 
-     * @param path 
-     * @returns elemina 1 obj referenciado al path obtenido del storage
-     */
-    deleteFile(path: string){
-      return deleteObject(ref(getStorage(), path));
-    }
-
+  deleteFile(path: string) {
+    return deleteObject(ref(getStorage(), path));
   }
+
+}
 
 

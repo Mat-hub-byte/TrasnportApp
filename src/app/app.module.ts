@@ -16,10 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot({mode : 'md'}), 
+    IonicModule.forRoot({mode : 'md'}), //Con el mode:'nd' compatibiliza en todos los dispositivos la interface 
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
+    AngularFireModule.initializeApp(environment.firebaseConfig), // Coneccion con Firebase - ver enviroment.firebaseConfig
+    HttpClientModule //Utilizado para el llamado a la API
   ],
     
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

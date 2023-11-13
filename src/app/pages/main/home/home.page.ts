@@ -89,7 +89,7 @@ export class HomePage implements OnInit {
     let imagePath = await this.firebaseSvc.getFilePath(product.image);
     await this.firebaseSvc.deleteFile(imagePath);
 
-    this.products = this.products.filter(p => p.id !== product.id)
+    this.products = this.products.filter(p => p.id !== product.id) //Actualiza la lista, sin el producto que se elminio y se pasa por parametro
 
     this.firebaseSvc.deleteDocument(path).then(async res => {
       this.utilsSvc.presentToas({
