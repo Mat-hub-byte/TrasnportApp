@@ -49,7 +49,7 @@ export class AddUpdatePublishComponent implements OnInit {
    */
   submit() {
     if (this.form.valid) {// verifica si el formulario es valido
-     if (this.product) {this.updateProduct()}
+    if (this.product) {this.updateProduct()}
       else this.createProduct();
     }
   }

@@ -47,14 +47,15 @@ export class HomePage implements OnInit {
   //----------Obtener productos
   /**
    * @method getProducts Obtiene la columna 'product' del uid del user logeado
-   utiliza el getCollectionData de service/firebase.service.ts*/
+    utiliza el getCollectionData de service/firebase.service.ts*/
   getProducts() {
     let path = `users/${this.user().uid}/products`;
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
-      next: (res: any) =>{
+      next: (res: any) => {
         console.log(res);
         this.products = res;
-        sub.unsubscribe();}
+        sub.unsubscribe();
+      }
     });
 
 
@@ -66,22 +67,18 @@ export class HomePage implements OnInit {
    * @method addUpdateProduct 
    */             //product tiene interface models/product.model.ts
   async addUpdateProduct(product?: Product) {
-    let success = await this.utilsSvc.presentModal({ // espera para la presentacion
+      await this.utilsSvc.presentModal({ // espera para la presentacion
       component: AddUpdatePublishComponent,
-      cssClass: 'add-update-modal',
       componentProps: { product }
     });
-
-    if (success) {
       this.getProducts(); //linea 51
-    }
   }
 
 
   // =======Eliminar producto==========
   async deleteProduct(product: Product) {
-    
-    let path= `users/${this.user().uid}/products/${product.id}`
+
+    let path = `users/${this.user().uid}/products/${product.id}`
 
     const loading = await this.utilsSvc.loading();
     await loading.present();
@@ -93,7 +90,7 @@ export class HomePage implements OnInit {
 
     this.firebaseSvc.deleteDocument(path).then(async res => {
       this.utilsSvc.presentToas({
-        message:'Producto eliminado exitosamente',
+        message: 'Producto eliminado exitosamente',
         duration: 1500,
         color: 'success',
         position: 'middle',
@@ -114,6 +111,6 @@ export class HomePage implements OnInit {
     }).finally(() => { // finaliza carga linea 87
       loading.dismiss();
     })
-}
+  }
 
 }

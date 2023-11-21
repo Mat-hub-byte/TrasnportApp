@@ -19,3 +19,21 @@
 .espacio{
     margin-top: 40px;
 }
+
+.center-align{
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -130px;
+
+    background-image: url("https://w0.peakpx.com/wallpaper/787/635/HD-wallpaper-blue-color-simple-background-lockscreen.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.forgot-password{
+    color: white;
+}

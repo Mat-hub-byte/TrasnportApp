@@ -82,7 +82,7 @@ export class FirebaseService {
     * @param collectionQuery 
     * @returns //Obtener documentos de una collecion
     */
-  getCollectionData(path: string, collectionQuery?: any) {
+  getCollectionData(path: string, collectionQuery?: any) { //Se utiliza la función query para aplicar una consulta a la referencia de la colección creada en el paso anterior. La consulta se define mediante el objeto collectionQuery
     const ref = collection(getFirestore(), path);
     return collectionData(query(ref, collectionQuery), { idField: 'id' });
 
@@ -93,7 +93,7 @@ export class FirebaseService {
    * 
    * @param path 
    * @param data 
-   * @returns //Setea un documento
+   * @returns //Setea un documento 
    */
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
@@ -107,7 +107,7 @@ export class FirebaseService {
    * @returns 
    */
   updateDocument(path: string, data: any) {
-    return updateDoc(doc(getFirestore(), path), data);
+    return updateDoc(doc(getFirestore(), path), data); //se crea una referencia a un documento en Firestore utilizando la función doc
   }
 
   //--------Eliminar un documento--------
@@ -137,7 +137,7 @@ export class FirebaseService {
    * 
    * @param path 
    * @param data 
-   * @returns //Agregar un documento a la colección
+   * @returns //Agregar un documento a la colección que no existe
    */
   addDocument(path: string, data: any) {
     return addDoc(collection(getFirestore(), path), data);

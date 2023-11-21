@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     let user = localStorage.getItem('user');
 
     return new Promise((resolve) => {
-      this.firebaseSvc.getAuth().onAuthStateChanged((auth) => {
+      this.firebaseSvc.getAuth().onAuthStateChanged((auth) => {// nos indica que hay un usuario autenticado o no
 
         if (auth) { //signica que hay un user autenticado (firebase)
           if (user) // doble autenticacion, que el usuario existe en la base de datos (local storage)

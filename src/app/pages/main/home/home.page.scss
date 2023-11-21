@@ -1,3 +1,45 @@
-#boton-museos{
+#boton-museos {
     margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    ion-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    ion-thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.custom-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-thumbnail {
+    width: 170px;
+    height: 200px;
+}
+
+.custom-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.custom-label {
+    padding: 16px;
+}
+
+
+.description {
+    font-size: 16px;
+    color: #333;
+
 }

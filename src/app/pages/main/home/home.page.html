@@ -3,7 +3,6 @@
       <!-- <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button> -->
       <ion-item>
         <ion-icon name="images-outline"></ion-icon>
-        <ion-title color="primary">Feed</ion-title>
         <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button>
       </ion-item>
   </ion-toolbar>
@@ -11,15 +10,15 @@
 
 <ion-content>
 
-
-  <ion-list>
+  <ion-card>
     <ion-item-sliding class="product-item" *ngFor="let p of products">
-      <ion-item>
-        <ion-avatar>
-          <img [src]="p.image"/>
-        </ion-avatar>
-        <ion-label>
-          <div class="name">{{p.name}}</div>
+      <ion-item class="custom-item">
+        <ion-thumbnail slot="start" class="custom-thumbnail">
+          <img [src]="p.image" alt="{{ p.name }} Image" class="custom-img">
+        </ion-thumbnail>
+  
+        <ion-label class="ion-text-wrap"> 
+          <p class="description">{{ p.name }}</p>
         </ion-label>
       </ion-item>
       <!-- Opciones para cada publicacion -->
@@ -36,20 +35,19 @@
   
       </ion-item-options>
 
-    
-    </ion-item-sliding>
-  </ion-list>
+
+
+</ion-item-sliding>
+</ion-card>
+
+
 
   <!---- nuevo producto ---->
-
-  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
-
-    <ion-fab-button (click)="addUpdateProduct()">
-      <ion-icon name="camera-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-
+<ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)=" addUpdateProduct()">
+    <ion-icon name="camera-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
 </ion-content>
 

@@ -15,8 +15,8 @@
         <!-- recorrer de museos (el array con la api) y almacenarlo en museo -->
     <ion-item *ngFor="let museo of museos">
     <div class="label-container">
-    <ion-label>Nombre: {{museo.nombre}}</ion-label>
-    <ion-label>Dirección: {{museo.direccion}}</ion-label>
+    <ion-label >Nombre: {{museo.nombre}}</ion-label>
+    <ion-label  class="ion-text-wrap">Dirección: {{museo.direccion}}</ion-label>
     <ion-label>Telefono: {{museo.telefono}}</ion-label>
     <ion-label>Descripcion: {{museo.descripcion}}</ion-label>
     </div>
