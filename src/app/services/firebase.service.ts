@@ -117,7 +117,7 @@ export class FirebaseService {
    * @returns 
    */
   deleteDocument(path: string) {
-    return deleteDoc(doc(getFirestore(), path));
+    return deleteDoc(doc(getFirestore(), path)); // realiza lo mismo que updateDocument pero sin devolver la data
   }
 
 

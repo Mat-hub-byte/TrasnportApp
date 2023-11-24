@@ -1,14 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-      <!-- <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button> -->
-      <ion-item>
-        <ion-icon name="images-outline"></ion-icon>
-        <ion-button id="boton-museos" slot="end" href="/museos" color="primary"> Museos </ion-button>
-      </ion-item>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Inicio">
+</app-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-card>
     <ion-item-sliding class="product-item" *ngFor="let p of products">
@@ -16,8 +13,8 @@
         <ion-thumbnail slot="start" class="custom-thumbnail">
           <img [src]="p.image" alt="{{ p.name }} Image" class="custom-img">
         </ion-thumbnail>
-  
-        <ion-label class="ion-text-wrap"> 
+
+        <ion-label class="ion-text-wrap">
           <p class="description">{{ p.name }}</p>
         </ion-label>
       </ion-item>
@@ -29,28 +26,24 @@
         </ion-item-option>
 
         <!-- Eliminar -->
-        <ion-item-option (click)="deleteProduct(p)" color="danger" >
+        <ion-item-option (click)="deleteProduct(p)" color="danger">
           <ion-icon class="option-btn" name="trash-outline"></ion-icon>
         </ion-item-option>
-  
+
       </ion-item-options>
 
 
 
-</ion-item-sliding>
-</ion-card>
+    </ion-item-sliding>
+  </ion-card>
 
 
 
-  <!---- nuevo producto ---->
-<ion-fab  vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)=" addUpdateProduct()">
-    <ion-icon name="camera-outline"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+  <!---- Nueva Publicacion ---->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)=" addUpdateProduct()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
-
-<ion-button (click)="signOut()"  horizontal="end">
-  Cerrar sesion
-</ion-button>

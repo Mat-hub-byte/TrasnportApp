@@ -20,8 +20,13 @@ const routes: Routes = [
   },
   {
     path: 'museos',
-    loadChildren: () => import('./pages/museos/museos.module').then( m => m.MuseosPageModule)
+    loadChildren: () => import('./pages/main/museos/museos.module').then( m => m.MuseosPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/main/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
   
 ];
 @NgModule({

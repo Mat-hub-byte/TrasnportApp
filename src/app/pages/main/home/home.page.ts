@@ -37,9 +37,18 @@ export class HomePage implements OnInit {
   user(): User {
     return this.utilsSvc.getFromLocalStorage('user');
   }
+  
   // sirve para ejecutar una funcion que cada vez q el usuario entre a la pagina
   ionViewWillEnter() {
     this.getProducts();
+  }
+
+  //funcion para actualizar la lista de publicaciones 
+  doRefresh(event) {
+    setTimeout(() => {
+      this.getProducts(),
+      event.target.complete();
+    }, 1000);
   }
 
 

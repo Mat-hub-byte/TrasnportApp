@@ -6,10 +6,15 @@
       <!-- ============ back button ============= -->
       <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
 
-       <!-- ============ Dissmiss Modal ============= -->
+      <!-- ============ Dissmiss Modal ============= -->
       <ion-button (click)="dismissModal()" *ngIf="isModal">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
+
+
+      
+      <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
+      
 
     </ion-buttons>
 
