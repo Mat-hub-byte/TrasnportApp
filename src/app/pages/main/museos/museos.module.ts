@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MuseosPageRoutingModule } from './museos-routing.module';
 
 import { MuseosPage } from './museos.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MuseosPageRoutingModule
+    MuseosPageRoutingModule,
+    SharedModule
   ],
   declarations: [MuseosPage]
 })

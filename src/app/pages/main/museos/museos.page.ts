@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MuseosPage implements OnInit {
 
+  
+
   constructor(private http: HttpClient) { }
 
   museos: any[] = [];

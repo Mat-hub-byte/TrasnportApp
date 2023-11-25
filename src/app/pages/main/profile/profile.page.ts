@@ -1,9 +1,13 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalController, ModalOptions } from '@ionic/angular';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { AddUpdatePublishComponent } from 'src/app/shared/components/add-update-publish/add-update-publish.component';
+import { CustomInputComponent } from 'src/app/shared/components/custom-input/custom-input.component';
+
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +18,7 @@ export class ProfilePage implements OnInit {
 
   firebaseSvc = inject(FirebaseService);
   UtilsSvc = inject(UtilsService);
+  ModalCtrl= inject(ModalController);
 
   ngOnInit() {
   }
@@ -63,5 +68,6 @@ export class ProfilePage implements OnInit {
       loading.dismiss();
     })
   }
+
 
 }

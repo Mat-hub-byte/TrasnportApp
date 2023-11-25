@@ -8,28 +8,23 @@ const routes: Routes = [
   {
     path: '',
     component: MainPage,
-    
+
     children: [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
       {
-      path: 'perfile',
-      loadChildren: () => import('./profile/profile.module').then(m=> m.ProfilePageModule)
+        path: 'museos',
+        loadChildren: () => import('./museos/museos.module').then(m => m.MuseosPageModule)
       },
       {
-        path: 'museos',
-      loadChildren: () => import('./museos/museos.module').then(m=> m.MuseosPageModule)
-      }
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      
     ]
   },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },
-
-
 ];
 
 @NgModule({

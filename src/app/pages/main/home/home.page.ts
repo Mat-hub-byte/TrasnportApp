@@ -42,6 +42,7 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.getProducts();
   }
+  
 
   //funcion para actualizar la lista de publicaciones 
   doRefresh(event) {
