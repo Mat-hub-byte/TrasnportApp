@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ModalOptions } from '@ionic/angular';
-import { Product } from 'src/app/models/product.model';
+import { promises } from 'dns';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { AddUpdatePublishComponent } from 'src/app/shared/components/add-update-publish/add-update-publish.component';
-import { CustomInputComponent } from 'src/app/shared/components/custom-input/custom-input.component';
+import { TermsComponent } from 'src/app/shared/components/terms/terms.component';
+import { collection } from '@angular/fire/firestore';
 
 
 @Component({
@@ -16,16 +16,19 @@ import { CustomInputComponent } from 'src/app/shared/components/custom-input/cus
 })
 export class ProfilePage implements OnInit {
 
-  firebaseSvc = inject(FirebaseService);
+  firebaseSvc = inject(FirebaseService); 
   UtilsSvc = inject(UtilsService);
   ModalCtrl= inject(ModalController);
 
-  ngOnInit() {
+  uid: string = null
+
+  async ngOnInit() {
   }
 
   user(): User {
     return this.UtilsSvc.getFromLocalStorage('user');
   }
+
   async takeImage() {
     let user = this.user();
     // Construye la ruta de users, con su user uid en FireStorage
@@ -69,5 +72,10 @@ export class ProfilePage implements OnInit {
     })
   }
 
-
+  termsModal(){
+    this.UtilsSvc.presentModal({
+      component: TermsComponent,
+      cssClass: 'add-update-modal'
+    }) 
+  }
 }

@@ -15,16 +15,24 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'home-public',
+        loadChildren: () => import('./home-public/home-public.module').then(m => m.HomePublicPageModule)
+      },
+      {
         path: 'museos',
         loadChildren: () => import('./museos/museos.module').then(m => m.MuseosPageModule)
       },
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
-      },
-      
+      },      
     ]
   },
+  {
+    path: 'home-public',
+    loadChildren: () => import('./home-public/home-public.module').then( m => m.HomePublicPageModule)
+  },
+
 ];
 
 @NgModule({

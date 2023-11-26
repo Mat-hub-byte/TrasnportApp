@@ -8,6 +8,7 @@ import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from 'firebase/storage'
 import { HttpClient } from '@angular/common/http';
+import { serverTimestamp } from 'firebase/firestore';
 
 
 @Injectable({
@@ -19,7 +20,12 @@ export class FirebaseService {
   firestore = inject(AngularFirestore);
   storage = inject(AngularFireStorage)
   utilsSvc = inject(UtilsService);
-
+  
+  //devuelve cualquier tipo de dato de la interface usuario que esta en la bbdd
+  getDoc<tipo>(path: string, id: string){
+    this.firestore.collection(path).doc<tipo>(id).valueChanges()
+  }
+  
   //-----------------------------------AUTENTICACION------------------------------------
   getAuth() {  //método de import getAuth from 'firebase/auth' para la instancia de autenticación de Firebase, que es necesaria para llevar a cabo operaciones de autenticación en una aplicación.
     return getAuth();
@@ -75,6 +81,13 @@ export class FirebaseService {
   }
 
   //---------------------------------------- Base de Datos  ----------------------------------------
+
+  async getUid(){
+    const user = await this.getAuth().currentUser
+    return user.uid
+  }
+
+
 
   /**
     * 
@@ -140,7 +153,12 @@ export class FirebaseService {
    * @returns //Agregar un documento a la colección que no existe
    */
   addDocument(path: string, data: any) {
+    data.createdAt = this.serverTimestamp();
     return addDoc(collection(getFirestore(), path), data);
+  }
+
+  serverTimestamp() {
+    return serverTimestamp();
   }
 
 
@@ -154,12 +172,15 @@ export class FirebaseService {
  * @returns uploadString Subir imagen
  * @returns getDownloadURL Almacenamiento 
  */
-  async uploadImage(path: string, data_url: string) {
-    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
-      return getDownloadURL(ref(getStorage(), path))
-    }
-    )
-  }
+  async uploadImage(path: string, data_url:string){
+    const timestamp = this.serverTimestamp(); // Marca de tiempo del servidor linea 166
+
+    // Agregar el campo createdAt al objeto de datos
+    const data = { image: data_url, createdAt: serverTimestamp() };
+
+    return uploadString(ref(getStorage(),path), data_url,'data_url').then(()=>{ 
+    return getDownloadURL(ref(getStorage(),path))}
+  )}
 
   //===========Obtener ruta de la imagen con su url ======
   /**

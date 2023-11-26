@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.getProducts(),
       event.target.complete();
-    }, 1000);
+    }, 2000);
   }
 
 

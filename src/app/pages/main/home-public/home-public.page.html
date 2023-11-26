@@ -1,0 +1,36 @@
+<app-header title="Publicaciones" [showMenu]="true"></app-header>
+
+<ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ng-container *ngFor="let user of users">  
+    <ion-list *ngIf="user.products && user.products.length > 0">
+
+      <ion-item *ngFor="let product of user.products">
+
+        <!-- Mostrar la imagen de cada foto con el nombre del usuario -->
+        <div class="divContainer">
+          <div class="itemCenter">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-label>Usuario: {{ user.name }}</ion-label>
+          </div>
+          
+
+            <ion-card>
+              <img [src]="product.image" alt="Foto de usuario">
+            </ion-card>
+          
+          
+          <ion-label class="ion-text-wrap">Descripcion: {{ product.name }}</ion-label>
+        </div>
+
+      </ion-item>
+
+    </ion-list>
+  </ng-container>
+
+
+</ion-content>

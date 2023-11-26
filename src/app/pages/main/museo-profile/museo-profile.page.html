@@ -1,0 +1,38 @@
+<app-header backButton="/museos" title="Museo Info"></app-header>
+
+<ion-content>
+  <div class="divConteiner" *ngIf="museoParticular"> <!-- si hay info, que cargue el fondo 1ero -->
+
+    <ion-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/MACN24021402.JPG/273px-MACN24021402.JPG"></ion-img>
+    
+    <div class="divConteinerInfo">
+      <h3>::::: Nombre :::::</h3>
+      <div class="divInfo">{{museoParticular.nombre}}</div>
+    </div>
+    
+    <div class="divConteinerInfo">
+      <h3>:::::: Dependencia ::::::</h3>
+      <div class="divInfo">{{museoParticular.depende_de ? museoParticular.depende_de : 'No Disponible'}}</div>
+    </div>
+    
+
+    <div class="divConteinerInfo">
+      <h3>::::::::::: Dirección :::::::::::</h3>
+      <div class="divInfo">{{museoParticular.direccion ?  museoParticular.direccion : 'No Disponible'}}</div>
+    </div>
+    
+
+    <div class="divConteinerInfo">
+      <h3>::::::: Teléfono :::::::</h3>
+      <div class="divInfo">{{museoParticular.telefono ? museoParticular.telefono : 'No Disponible'}}</div>
+      <ion-icon (click)="copiarAlPortapapeles(museoParticular.telefono, 'Teléfono')" name="copy-outline"></ion-icon>
+    </div>                <!-- pasa la info de museoPArticular.telefono como parámetro a la función -->
+
+    <div class="divConteinerInfo">
+      <h3>::::::: Email :::::::</h3>
+      <div class="divInfo">{{ museoParticular.email ? museoParticular.email : 'No Disponible' }}</div>
+      <ion-icon (click)="copiarAlPortapapeles(museoParticular.email, 'Email')" name="copy-outline"></ion-icon>
+    </div>               <!-- pasa la info de museoPArticular.email como parámetro a la función -->
+
+  </div>
+</ion-content>

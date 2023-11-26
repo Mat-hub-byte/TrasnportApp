@@ -3,5 +3,8 @@ export interface User{
     email: string,
     password: string,
     name: string,
-    image: string
+    image: string,
+    id: string,
+    products?: any[];
 }
+

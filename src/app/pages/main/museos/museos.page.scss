@@ -1,14 +1,42 @@
-.label-container {
+ion-content{
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+  .label-container {
     display: flex;
     flex-direction: column;
     padding-bottom: 30px;
+    background: linear-gradient(55deg, rgba(0, 0, 165, 1), rgba(0, 195, 255, 1));
+    width: 100%;
+    margin: 6px 0px 6px 0px;
+    border-radius: 10px 10px;
+    text-align: center;
+    transform: scale(1.0);
+    transition: transform 0.2s;
+
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  
 
     ion-label{
-        padding-bottom: 7px;
+        padding: 12px 5px 0px 12px;
         display: flex;
         flex-wrap: wrap;
-    }
+        background: transparent;
+        font-size: 19px;
+        margin: auto;
+        color: white;
+        
+
+        position:relative;
+        top:10px;
+    
+      }   
   }
+
 
   .backbutton{
     height: 50%;

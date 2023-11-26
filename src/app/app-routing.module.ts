@@ -26,7 +26,10 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/main/profile/profile.module').then( m => m.ProfilePageModule)
   },
-
+  {
+    path: 'museo-profile/:id',
+    loadChildren: () => import('./pages/main/museo-profile/museo-profile.module').then( m => m.MuseoProfilePageModule)
+  },
   
 ];
 @NgModule({

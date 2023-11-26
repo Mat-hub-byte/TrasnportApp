@@ -1,20 +1,17 @@
-<app-header [showMenu]="true" title="Museos Info" ></app-header>
+<app-header backButton="main/home" title="Museos Info" ></app-header>
 
 <ion-content [fullscreen]="true">
-      <ion-list>
-        <!-- recorrer de museos (el array con la api) y almacenarlo en museo -->
-    <ion-item *ngFor="let museo of museos">
-    <div class="label-container">
-    <ion-label >Nombre: {{museo.nombre}}</ion-label>
-    <ion-label  class="ion-text-wrap">Dirección: {{museo.direccion}}</ion-label>
-    <ion-label>Telefono: {{museo.telefono}}</ion-label>
-    </div>
-
+  <ion-list>
+    <!-- recorrer de museos (el array con la api) y almacenarlo en museo -->
+    <ion-item *ngFor="let museo of museos" [routerLink]="['/museo-profile/' + museo.id]">
+      <div class="label-container">
+          <ion-label class="ion-text-wrap">Museo: {{museo.nombre}}</ion-label>
+      </div>
     </ion-item>
-    </ion-list>
+</ion-list>
 
-    <!-- <h1>Estado del Subte</h1>
-    <iframe id="iframedesktop" style="bottom:0px; top:0px; background-color:white; min-width:100%; min-height:550px; overflow:hidden; z-index:1000; position:relative;" frameborder="0" src="https://aplicacioneswp.metrovias.com.ar/estadolineas/desktop.html">
-    </iframe> -->
-  
+<!-- <h1>Estado del Subte</h1>
+<iframe id="iframedesktop" style="bottom:0px; top:0px; background-color:white; min-width:100%; min-height:550px; overflow:hidden; z-index:1000; position:relative;" frameborder="0" src="https://aplicacioneswp.metrovias.com.ar/estadolineas/desktop.html">
+</iframe> -->
+
 </ion-content>

@@ -4,8 +4,8 @@
 
 
 <ion-content class="ion-no-padding ion-text-center">
-  <ion-avatar>
-    <img *ngIf="user()?.image" [src]="user()?.image" />
+  <ion-avatar >
+    <img *ngIf="user()?.image" [src]="user()?.image"/>
     <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
   </ion-avatar>
   <ion-button class="photo-btn" (click)="takeImage()" mode="ios"  size="small" shape="round">
@@ -13,10 +13,24 @@
     <ion-icon name="camera-outline"></ion-icon>
   </ion-button>
 
-  <h2>{{user().name}}</h2>
-  <div>Usuario</div>
 
-  <ion-item button detail>
+  <h2>{{user().name}}
+      <!-- <ion-icon  size="small" slot="end" name="create-outline"></ion-icon> -->
+  </h2>
+  <div>Usuario</div> 
+
+  <br>
+  <ion-item href="/main/home" button detail>
+    <ion-icon color="primary" slot="start" name="home-outline"></ion-icon>
+    <ion-label>Mis Publicaciones</ion-label>
+  </ion-item>
+
+  <ion-item href="/main/museos" button detail>
+    <ion-icon color="primary" slot="start" name="information-circle-outline"></ion-icon>
+    <ion-label>Museos Info</ion-label>
+  </ion-item>
+
+  <ion-item (click)="termsModal()"  button detail>
     <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
     <ion-label>Terminos & condiciones</ion-label>
   </ion-item>

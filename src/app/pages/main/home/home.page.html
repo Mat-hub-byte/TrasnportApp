@@ -1,48 +1,51 @@
-<app-header [showMenu]="true" title="Inicio"></app-header>
+<app-header [showMenu]="true" title="Mis Publicacion"></app-header>
 
 <ion-content>
 
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <!-- Funcion para actualizar la pagina -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card>
+  <ion-list>
     <ion-item-sliding class="product-item" *ngFor="let p of products">
-      <ion-item class="custom-item">
-        <ion-thumbnail slot="start" class="custom-thumbnail">
-          <img [src]="p.image" alt="{{ p.name }} Image" class="custom-img">
-        </ion-thumbnail>
-
+      <ion-item class="items">
+        <ion-avatar>
+          <img [src]="p.image">
+        </ion-avatar>
         <ion-label class="ion-text-wrap">
-          <p class="description">{{ p.name }}</p>
+          <div class="name">{{p.name}}</div>
         </ion-label>
       </ion-item>
-      <!-- Opciones para cada publicacion -->
+
+
+  <!-- Opciones para cada publicacion -->
       <ion-item-options>
         <!-- Editar -->
-        <ion-item-option (click)="addUpdateProduct(p)">
+        <ion-item-option (click)="addUpdateProduct(p)"> <!-- abre 1 modal p se pasa como argumento de la lista products -->
           <ion-icon class="option-btn" name="create-outline"></ion-icon>
         </ion-item-option>
 
         <!-- Eliminar -->
-        <ion-item-option (click)="deleteProduct(p)" color="danger">
+        <ion-item-option (click)="deleteProduct(p)" color="danger" >
           <ion-icon class="option-btn" name="trash-outline"></ion-icon>
         </ion-item-option>
-
+  
       </ion-item-options>
 
-
-
+    
     </ion-item-sliding>
-  </ion-card>
+  </ion-list>
 
+  <!---- nuevo producto ---->
 
-
-  <!---- Nueva Publicacion ---->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)=" addUpdateProduct()">
+
+    <ion-fab-button (click)="addUpdateProduct()">
       <ion-icon name="camera-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
 
 </ion-content>
