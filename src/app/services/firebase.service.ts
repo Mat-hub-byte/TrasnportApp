@@ -153,13 +153,10 @@ export class FirebaseService {
    * @returns //Agregar un documento a la colección que no existe
    */
   addDocument(path: string, data: any) {
-    data.createdAt = this.serverTimestamp();
     return addDoc(collection(getFirestore(), path), data);
   }
 
-  serverTimestamp() {
-    return serverTimestamp();
-  }
+  
 
 
   //========================ALMACENAMIENTO============================
@@ -173,11 +170,6 @@ export class FirebaseService {
  * @returns getDownloadURL Almacenamiento 
  */
   async uploadImage(path: string, data_url:string){
-    const timestamp = this.serverTimestamp(); // Marca de tiempo del servidor linea 166
-
-    // Agregar el campo createdAt al objeto de datos
-    const data = { image: data_url, createdAt: serverTimestamp() };
-
     return uploadString(ref(getStorage(),path), data_url,'data_url').then(()=>{ 
     return getDownloadURL(ref(getStorage(),path))}
   )}

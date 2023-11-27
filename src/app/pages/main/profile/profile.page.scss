@@ -1,14 +1,18 @@
 ion-avatar{
-    width: 240px;
-    height: 240px;
+    width: 190px;
+    height: 190px;
     margin: 0 auto;
     margin-top: 25px;
-    
 }
 
 .photo-btn{
     position: relative;
     bottom: 25px;
+
+    ion-icon{
+        font-size: 23px;
+        padding: 4px 0px 4px 0px;
+    }
 }
 
 h2{

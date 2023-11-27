@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class MainPage implements OnInit {
   
-  // variable con el arreglo de paginas
+  // variable con el arreglo de paginas dentro del main, va a estar en el menu
   pages=[
     {title: 'Mis Publicaciones', url: '/main/home', icon: 'home-outline'},
     {title: 'Publicaciones', url: '/main/home-public', icon:'share-outline'},

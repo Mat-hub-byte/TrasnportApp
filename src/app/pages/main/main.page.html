@@ -4,17 +4,21 @@
   
   <ion-content class="ion-text-center ">
 
-    <ion-avatar >
-      <img *ngIf="user()?.image" [src]="user()?.image" />
-      <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
+    <ion-avatar > 
+      <img *ngIf="user()?.image" [src]="user()?.image" /><!-- si hay imagen se muestra -->
+      <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon><!-- Si no hay img empty img -->
     </ion-avatar>
 
 
       <h4>{{user()?.name}}</h4>
       
 
+      <!-- 
+      [ngClass] Si la expresión es verdadera, la clase 'active' se aplicará al elemento
+
+      reouterDirection se utiliza para indicar que la página actual es la "raíz" de la navegación,-->
     <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-      <ion-item [ngClass]="{'active': currentPath === p.url}" [routerLink]="p.url" reouterDirection="root" details>
+      <ion-item [ngClass]="{'active': currentPath === p.url}" [routerLink]="p.url" routerDirection="root" details>
         <ion-icon slot="start" [name]="p.icon"></ion-icon>
         <ion-label>{{p.title}}</ion-label>
       </ion-item>
@@ -22,6 +26,7 @@
     </ion-menu-toggle>
   </ion-content>
 
+  <!-- CERRAR SESIÓN -->
   <ion-footer>
     <ion-menu-toggle auto-hide="false" >
       <ion-item (click)="signOut()" lines="none">
